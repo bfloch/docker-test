@@ -19,14 +19,9 @@ jobs:
       
 
     steps:
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
-        
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build --build-arg python=${{ matrix.python-version }} . --file Dockerfile --tag rez-test:${{ github.sha }}
+      run: docker build --build-arg python=${{ matrix.python-version }} . --file Dockerfile --tag rez-test-win:${{ github.sha }}
 
     - name: Run the Docker image
-      run: docker run my-image-name:${{ github.sha }} ${{ github.repository }} ${{ github.sha }}
+      run: docker run rez-test-win:${{ github.sha }} ${{ github.repository }} ${{ github.sha }}
