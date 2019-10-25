@@ -6,8 +6,13 @@ FROM mcr.microsoft.com/windows/servercore:1809-amd64
 
 SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
 
+# ------------------------------------------------------------------------------------------------------------
+# Arguments
+#
+# Has to match full(!) chocolatey version
 ARG python
-RUN echo Hello ${ENV:python}
+
+RUN echo Building with python=${ENV:python}
 
 # ------------------------------------------------------------------------------------------------------------
 # Chocolatey
