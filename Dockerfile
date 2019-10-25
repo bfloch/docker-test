@@ -8,4 +8,4 @@ SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass"]
 
 COPY entrypoint.ps1 /entrypoint.ps1
 
-ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass", "-File", "/entrypoint.sh"]
+ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass", "-File", "/entrypoint.ps1"]
