@@ -4,7 +4,10 @@
 # Compare: https://hub.docker.com/_/microsoft-windows-servercore
 FROM mcr.microsoft.com/windows/servercore:1809-amd64
 
-SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass"]
+SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
+
+ARG python
+RUN echo $python
 
 # ------------------------------------------------------------------------------------------------------------
 # Chocolatey
@@ -31,7 +34,6 @@ RUN choco install pwsh --yes --version=6.2.2
 # ------------------------------------------------------------------------------------------------------------
 # python (Argument)
 #
-ARG python
 RUN choco install python --yes --version=$python
 
 COPY entrypoint.ps1 /entrypoint.ps1
