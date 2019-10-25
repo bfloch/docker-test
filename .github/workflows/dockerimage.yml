@@ -20,9 +20,9 @@ jobs:
 
     steps:
     - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
         
     - uses: actions/checkout@v1
     - name: Build the Docker image
