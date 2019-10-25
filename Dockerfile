@@ -12,7 +12,8 @@ SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
 # Has to match full(!) chocolatey version
 ARG python
 
-RUN echo Building with python=${ENV:python}
+# Early check
+RUN echo "Building with python=${ENV:python}"
 
 # ------------------------------------------------------------------------------------------------------------
 # Chocolatey
