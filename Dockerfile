@@ -26,13 +26,13 @@ RUN choco install cmake --version=3.15.4
 # ------------------------------------------------------------------------------------------------------------
 # pwsh (PowerShellCore)
 #
-choco install pwsh --version=6.2.2
+RUN choco install pwsh --version=6.2.2
 
 # ------------------------------------------------------------------------------------------------------------
 # python (Argument)
 #
 ARG python
-choco install python --version=$python
+RUN choco install python --version=$python
 
 COPY entrypoint.ps1 /entrypoint.ps1
 
