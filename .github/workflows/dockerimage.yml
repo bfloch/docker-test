@@ -14,4 +14,4 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }}
 
     - name: Run the Docker image
-      run: docker run my-image-name:${{ github.sha }}
+      run: docker run my-image-name:${{ github.sha }} Hello ${{ github.sha }}
