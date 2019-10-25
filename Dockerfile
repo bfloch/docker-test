@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/windows/servercore:1809-amd64
 SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
 
 ARG python
-RUN echo $python
+RUN echo Hello $python
 
 # ------------------------------------------------------------------------------------------------------------
 # Chocolatey
