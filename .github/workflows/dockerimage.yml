@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }} --build-arg python=${{ matrix.python-version }}
+      run: docker build --build-arg python=${{ matrix.python-version }} . --file Dockerfile --tag my-image-name:${{ github.sha }}
 
     - name: Run the Docker image
       run: docker run my-image-name:${{ github.sha }} Hello ${{ github.sha }}
