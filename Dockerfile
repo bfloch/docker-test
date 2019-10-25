@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/windows/servercore:1809-amd64
 SHELL ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "ByPass"]
 
 ARG python
-RUN echo Hello $python
+RUN echo Hello ${ENV:python}
 
 # ------------------------------------------------------------------------------------------------------------
 # Chocolatey
@@ -34,7 +34,7 @@ RUN choco install pwsh --yes --version=6.2.2
 # ------------------------------------------------------------------------------------------------------------
 # python (Argument)
 #
-RUN choco install python --yes --version=$python
+RUN choco install python --yes --version=${ENV:python}
 
 COPY entrypoint.ps1 /entrypoint.ps1
 
