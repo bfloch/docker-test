@@ -16,11 +16,17 @@ jobs:
 #          - '3.6.8'
 #          - '3.7.5'
       fail-fast: false    
+      
 
     steps:
+    - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+        
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build --build-arg python=${{ matrix.python-version }} . --file Dockerfile --tag my-image-name:${{ github.sha }}
+      run: docker build --build-arg python=${{ matrix.python-version }} . --file Dockerfile --tag rez-test:${{ github.sha }}
 
     - name: Run the Docker image
-      run: docker run my-image-name:${{ github.sha }} Hello ${{ github.sha }}
+      run: docker run my-image-name:${{ github.sha }} ${{ github.repository }} ${{ github.sha }}
