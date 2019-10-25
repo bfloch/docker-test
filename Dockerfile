@@ -21,18 +21,18 @@ RUN choco install git.install --yes --version=2.23.0
 # ------------------------------------------------------------------------------------------------------------
 # Cmake
 #
-RUN choco install cmake --version=3.15.4
+RUN choco install cmake --yes --version=3.15.4
 
 # ------------------------------------------------------------------------------------------------------------
 # pwsh (PowerShellCore)
 #
-RUN choco install pwsh --version=6.2.2
+RUN choco install pwsh --yes --version=6.2.2
 
 # ------------------------------------------------------------------------------------------------------------
 # python (Argument)
 #
 ARG python
-RUN choco install python --version=$python
+RUN choco install python --yes --version=$python
 
 COPY entrypoint.ps1 /entrypoint.ps1
 
