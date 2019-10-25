@@ -2,16 +2,25 @@ name: Docker Image CI
 
 on: [push]
 
+
 jobs:
 
   build:
 
     runs-on: windows-2019
+    
+    strategy:
+      matrix:
+        python-version:
+          - '2.7.11'
+          - '3.6.8'
+          - '3.7.5'
+      fail-fast: false    
 
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }}
+      run: docker build . --file Dockerfile --tag my-image-name:${{ github.sha }} --build-arg python=${{ matrix.python-version }}
 
     - name: Run the Docker image
       run: docker run my-image-name:${{ github.sha }} Hello ${{ github.sha }}
