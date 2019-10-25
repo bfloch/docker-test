@@ -1,9 +1,8 @@
 # Container image that runs your code
-FROM alpine:3.10
+FROM mcr.microsoft.com/windows/servercore:1903-amd64
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh 
+SHELL ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass"]
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.ps1 /entrypoint.ps1
+
+ENTRYPOINT ["powershell.exe", "-NoLogo", "-ExecutionPolicy", "ByPass", "-File", "/entrypoint.sh"]
